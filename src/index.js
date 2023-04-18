@@ -39,7 +39,40 @@ const siteContent = { // BU NESNEYİ DEĞİŞTİRMEYİN
   },
 };
 
-console.log('Proje açıldı!')
-
 
 /* Kodlar Buradan aşağıya */
+// images
+let imageSrc = Object.values(siteContent["images"])
+let images = document.querySelectorAll("img")
+for (let i =0; i<images.length; i++){
+  images[i].setAttribute("src",imageSrc[i])
+}
+
+// header-nav
+let navLinks = document.querySelector("nav").querySelectorAll("a")
+navLinks.forEach(element=> element.setAttribute("class","italic"))
+let linkContents = Object.values(siteContent["nav"])
+navLinks.forEach((element,index)=> element.textContent = linkContents[index])
+
+// cta texts
+let h1 ="h1"
+let button = "button"
+let ctaText = document.querySelector(".cta-text")
+let h1Content = ctaText.querySelector(h1)
+h1Content.textContent= siteContent["cta"].h1
+let buttonContent = ctaText.querySelector("button")
+buttonContent.textContent=siteContent["cta"].button
+// main-content
+let texts = document.querySelector(".main-content").querySelectorAll("h4, p")
+let textContents = Object.values(siteContent["ana-içerik"])
+texts.forEach((element,index) => element.textContent = textContents[index] )
+
+//footer
+let footerLink = document.querySelector("footer").querySelectorAll("a")
+footerLink[0].setAttribute("class","bold");
+footerLink[0].textContent = "Copyright Bir Şirket Sitesi 2022"
+
+//contact
+let contactTexts= Object.values(siteContent["iletisim"])
+let contact = document.querySelector(".contact").querySelectorAll("h4,p")
+contact.forEach((element, index) => element.textContent = contactTexts[index] )
